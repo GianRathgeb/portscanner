@@ -11,7 +11,6 @@ try:
     for port in range(79, 81): 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
         print(f'Checking port {port}')
-        #socket.setdefaulttimeout(1) 
           
         # returns an error indicator 
         result = s.connect_ex((target,port)) 
