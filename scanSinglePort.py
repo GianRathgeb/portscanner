@@ -1,6 +1,6 @@
 import socket
 import sys
-strHostname = 'localhost'
+strHostname = 'google.ch'
 
 
 target = socket.gethostbyname(strHostname)
@@ -8,8 +8,9 @@ print(target)
 
 try: 
     # will scan ports between 1 to 65,535 
-    for port in range(50): 
+    for port in range(79, 81): 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+        print(f'Checking port {port}')
         #socket.setdefaulttimeout(1) 
           
         # returns an error indicator 
