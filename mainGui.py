@@ -45,7 +45,7 @@ objTbInpHost.place(x=168, y=37)
 objTbInpPort = Entry(root)
 objTbInpPort.place(x=168, y=67)
 
-
+# create the radio buttons
 arrModes = [('Single', 1), ('Multi', 2)]
 for txt, val in arrModes:
     Radiobutton(root, 
