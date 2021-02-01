@@ -21,6 +21,7 @@ def fnScanPort(hostname, port):
             s.close() 
         '''    
 
+
         #! Code for single port scan
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
         print(f'Checking port {port}')
