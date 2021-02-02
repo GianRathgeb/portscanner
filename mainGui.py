@@ -12,7 +12,12 @@ blnPortModeSingle = True
 def btnClickFunction():
     # TODO: Check if fields filled out
     # TODO: function for single and multi mode
-    fnScanPort(objTbInpHost.get(), objTbInpPort.get())
+    if blnPortModeSingle:
+        fnScanPort(objTbInpHost.get(), objTbInpPort.get())
+    else:
+        # TODO: Code for multi mode
+        pass
+    
 
 
 root = Tk()
