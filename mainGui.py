@@ -5,9 +5,13 @@ from tkinter import *
 
 from scanSinglePort import fnScanPort
 
+#? global variables
+blnPortModeSingle = True
 
 # this is the function called when the button is clicked
 def btnClickFunction():
+    # TODO: Check if fields filled out
+    # TODO: function for single and multi mode
     fnScanPort(objTbInpHost.get(), objTbInpPort.get())
 
 
@@ -19,9 +23,11 @@ objCheckBoxPicked.set(1)
 
 
 def fnRadioButtons():
-    test = objCheckBoxPicked.get()
-    print(test)
-
+    intCheckBoxPicked = objCheckBoxPicked.get()
+    if (intCheckBoxPicked == 1):
+        blnPortModeSingle = True
+    else:
+        blnPortModeSingle = False
 
 # This is the section of code which creates the main window
 root.geometry('560x320')
@@ -49,7 +55,7 @@ objTbInpPort = Entry(root)
 objTbInpPort.place(x=168, y=67)
 
 
-arrModes = [('Single', 1), ('Multi', 2)]
+arrModes = [('Single Port', 1), ('Multiple Ports', 2)]
 frame=Frame(root, width=0, height=0, bg='#FFFAFA')
 frame.place(x=68, y=87)
 for txt, val in arrModes:
@@ -60,6 +66,7 @@ for txt, val in arrModes:
                 command=fnRadioButtons,
                 bg='#FFFAFA', font=('arial', 12, 'normal'),
                 value=val).pack(side='left', anchor=W)
+
 # create button
 Button(root, text='Check for open Port', bg='#FFFAFA', font=(
     'arial', 12, 'normal'), command=btnClickFunction).place(x=78, y=140)
