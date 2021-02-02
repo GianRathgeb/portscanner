@@ -16,9 +16,12 @@ root = Tk()
 # variable for radio buttons
 objCheckBoxPicked = IntVar()
 objCheckBoxPicked.set(1)
+
+
 def fnRadioButtons():
-	test = objCheckBoxPicked.get()
-	print(test)
+    test = objCheckBoxPicked.get()
+    print(test)
+
 
 # This is the section of code which creates the main window
 root.geometry('560x320')
@@ -48,11 +51,12 @@ objTbInpPort.place(x=168, y=67)
 # create the radio buttons
 arrModes = [('Single', 1), ('Multi', 2)]
 for txt, val in arrModes:
-    Radiobutton(root, 
+    Radiobutton(root,
                 text=txt,
-                padx = 20, 
-                variable=objCheckBoxPicked, 
+                padx=20,
+                variable=objCheckBoxPicked,
                 command=fnRadioButtons,
+                bg='#FFFAFA', font=('arial', 12, 'normal'),
                 value=val).pack(anchor=W)
 
 # create button
