@@ -26,7 +26,7 @@ def fnRadioButtons():
 # This is the section of code which creates the main window
 root.geometry('560x320')
 root.configure(background='#FFFAFA')
-root.title('Hello, I\'m the main window')
+root.title('Welcome to port scanner')
 
 
 # label for host
@@ -58,7 +58,6 @@ for txt, val in arrModes:
                 command=fnRadioButtons,
                 bg='#FFFAFA', font=('arial', 12, 'normal'),
                 value=val).pack(anchor=W)
-
 # create button
 Button(root, text='Check for open Port', bg='#FFFAFA', font=(
     'arial', 12, 'normal'), command=btnClickFunction).place(x=78, y=140)
