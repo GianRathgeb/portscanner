@@ -50,14 +50,16 @@ objTbInpPort.place(x=168, y=67)
 
 
 arrModes = [('Single', 1), ('Multi', 2)]
+frame=Frame(root, width=0, height=0, bg='#FFFAFA')
+frame.place(x=68, y=87)
 for txt, val in arrModes:
-    Radiobutton(root,
+    Radiobutton(frame,
                 text=txt,
                 padx=20,
                 variable=objCheckBoxPicked,
                 command=fnRadioButtons,
                 bg='#FFFAFA', font=('arial', 12, 'normal'),
-                value=val).pack(anchor=W)
+                value=val).pack(side='left', anchor=W)
 # create button
 Button(root, text='Check for open Port', bg='#FFFAFA', font=(
     'arial', 12, 'normal'), command=btnClickFunction).place(x=78, y=140)
