@@ -2,10 +2,10 @@ import socket
 import sys
 
 def fnScanPort(hostname, portRange):
-    if not isinstance(portRange, int):
-        portRange = int(portRange)
+    for i in range(0, len(portRange)):
+        if not isinstance(portRange[i], int):
+            portRange[i] = int(portRange[i])
     target = socket.gethostbyname(hostname)
-
     try: 
 
         # will scan ports between 1 to 65,535 
