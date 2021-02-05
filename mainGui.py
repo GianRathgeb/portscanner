@@ -3,21 +3,22 @@ from tkinter import ttk
 from tkinter import *
 
 
-from scanSinglePort import fnScanPort
+from scanSinglePort import fnScanPort as fnScanSinglePort
+from scanMultiPort import fnScanPort as fnScanMultiPort
 
-#? global variables
+# ? global variables
 blnPortModeSingle = True
 
 # this is the function called when the button is clicked
+
+
 def btnClickFunction():
     # TODO: Check if fields filled out
     # TODO: function for single and multi mode
     if blnPortModeSingle:
-        fnScanPort(objTbInpHost.get(), objTbInpPort.get())
+        fnScanSinglePort(objTbInpHost.get(), objTbInpPort.get())
     else:
-        # TODO: Code for multi mode
-        pass
-    
+        fnScanMultiPort(objTbInpHost.get(), objTbInpPort.get().split("-")[0], objTbInpPort.get().split("-")[1])
 
 
 root = Tk()
@@ -28,11 +29,13 @@ objCheckBoxPicked.set(1)
 
 
 def fnRadioButtons():
+    global blnPortModeSingle
     intCheckBoxPicked = objCheckBoxPicked.get()
     if (intCheckBoxPicked == 1):
         blnPortModeSingle = True
     else:
         blnPortModeSingle = False
+
 
 # This is the section of code which creates the main window
 root.geometry('560x320')
@@ -61,7 +64,7 @@ objTbInpPort.place(x=168, y=67)
 
 
 arrModes = [('Single Port', 1), ('Multiple Ports', 2)]
-frame=Frame(root, width=0, height=0, bg='#FFFAFA')
+frame = Frame(root, width=0, height=0, bg='#FFFAFA')
 frame.place(x=68, y=87)
 for txt, val in arrModes:
     Radiobutton(frame,
