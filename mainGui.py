@@ -12,7 +12,7 @@ blnPortModeSingle = True
 # this is the function called when the button is clicked
 
 
-def btnClickFunction():
+def fnStartPortScan():
     # TODO: Check if fields filled out
     if blnPortModeSingle:
         if fnCheckIfEmptyFields([objTbInpHost, objTbInpPort]):
@@ -21,8 +21,11 @@ def btnClickFunction():
             print("Please fill in all fields")
     else:
         if fnCheckIfEmptyFields([objTbInpHost, objTbInpPort]):
-            fnScanMultiPort(objTbInpHost.get(), objTbInpPort.get().split(
-                "-")[0], objTbInpPort.get().split("-")[1])
+            if objTbInpPort.get().count("-") == 1:
+                fnScanMultiPort(objTbInpHost.get(), objTbInpPort.get().split(
+                    "-")[0], objTbInpPort.get().split("-")[1])
+            else:
+                print("Please enter a range of ports")
         else:
             print("Please fill in all fields")
 
@@ -89,9 +92,12 @@ for txt, val in arrModes:
                 bg='#FFFAFA', font=('arial', 12, 'normal'),
                 value=val).pack(side='left', anchor=W)
 
-# create button
+# create button to scan ports
 Button(root, text='Check for open Port', bg='#FFFAFA', font=(
-    'arial', 12, 'normal'), command=btnClickFunction).place(x=78, y=140)
+    'arial', 12, 'normal'), command=fnStartPortScan).place(x=78, y=140)
+Button(root, text='Close', bg='#FFFAFA', font=(
+    'arial', 12, 'normal'), command=root.destroy).place(x=248, y=140)
+
 
 
 root.mainloop()
