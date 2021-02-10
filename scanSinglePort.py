@@ -7,7 +7,11 @@ def fnScanPort(hostname, port):
     if not isinstance(port, int):
         port = int(port)
     # DNS resolve hostname / ip address (ip stays the same)
-    target = socket.gethostbyname(hostname)
+    try:
+        target = socket.gethostbyname(hostname)
+    except:
+        print("Host cannot be resolved")
+        return
 
     try:
         # make tcp connection to port

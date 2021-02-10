@@ -14,11 +14,25 @@ blnPortModeSingle = True
 
 def btnClickFunction():
     # TODO: Check if fields filled out
-    # TODO: function for single and multi mode
     if blnPortModeSingle:
-        fnScanSinglePort(objTbInpHost.get(), objTbInpPort.get())
+        if fnCheckIfEmptyFields([objTbInpHost, objTbInpPort]):
+            fnScanSinglePort(objTbInpHost.get(), objTbInpPort.get())
+        else:
+            print("Please fill in all fields")
     else:
-        fnScanMultiPort(objTbInpHost.get(), objTbInpPort.get().split("-")[0], objTbInpPort.get().split("-")[1])
+        if fnCheckIfEmptyFields([objTbInpHost, objTbInpPort]):
+            fnScanMultiPort(objTbInpHost.get(), objTbInpPort.get().split(
+                "-")[0], objTbInpPort.get().split("-")[1])
+        else:
+            print("Please fill in all fields")
+
+
+def fnCheckIfEmptyFields(arrFields):
+    blnNoEmptyFields = True
+    for field in arrFields:
+        if field.get() == "":
+            blnNoEmptyFields = False
+    return blnNoEmptyFields
 
 
 root = Tk()
