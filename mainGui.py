@@ -95,7 +95,7 @@ for txt, val in arrModes:
 # create button to scan ports
 Button(root, text='Check for open Port', bg='#FFFAFA', font=(
     'arial', 12, 'normal'), command=fnStartPortScan).place(x=78, y=140)
-Button(root, text='Close', bg='#FFFAFA', font=(
+Button(root, text='Close Program', bg='#FFFAFA', font=(
     'arial', 12, 'normal'), command=root.destroy).place(x=248, y=140)
 
 
