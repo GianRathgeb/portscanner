@@ -1,8 +1,8 @@
 import socket
 import sys
+import time
 
-
-def fnScanPort(hostname, lowestPort, highestPort):
+def fnScanPort(hostname, lowestPort, highestPort, speed):
     # Check if ports are integers
     if not isinstance(lowestPort, int):
         lowestPort = int(lowestPort)
@@ -20,7 +20,10 @@ def fnScanPort(hostname, lowestPort, highestPort):
             result = s.connect_ex((target, port))
             if result == 0:
                 print("Port {} is open".format(port))
+            else:
+                print("Port {} is closed".format(port))
             s.close()
+            time.sleep(speed)
     # Stop program when user interrupt or when error
     except KeyboardInterrupt:
         print("\n Exitting Program !!!!")

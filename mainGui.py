@@ -22,8 +22,12 @@ def fnStartPortScan():
     else:
         if fnCheckIfEmptyFields([objTbInpHost, objTbInpPort]):
             if objTbInpPort.get().count("-") == 1:
+                if objTbInpSpeed.get() == "":
+                    fltSpeed = 0.1
+                else:
+                    fltSpeed = float(objTbInpSpeed.get())
                 fnScanMultiPort(objTbInpHost.get(), objTbInpPort.get().split(
-                    "-")[0], objTbInpPort.get().split("-")[1])
+                    "-")[0], objTbInpPort.get().split("-")[1], fltSpeed)
             else:
                 print("Please enter a range of ports")
         else:
@@ -50,8 +54,12 @@ def fnRadioButtons():
     intCheckBoxPicked = objCheckBoxPicked.get()
     if (intCheckBoxPicked == 1):
         blnPortModeSingle = True
+        objLblSpeed.place_forget()
+        objTbInpSpeed.place_forget()
     else:
         blnPortModeSingle = False
+        objLblSpeed.place(x=78, y=97)
+        objTbInpSpeed.place(x=188, y=97)
 
 
 # This is the section of code which creates the main window
@@ -59,30 +67,40 @@ root.geometry('560x320')
 root.configure(background='#FFFAFA')
 root.title('Welcome to port scanner')
 
+Label(root, text='Fields with * are required', bg='#FFFAFA', font=(
+    'arial', 12, 'normal')).place(x=78, y=7)
 
 # label for host
-Label(root, text='Enter Host', bg='#FFFAFA', font=(
+Label(root, text='Enter Host *', bg='#FFFAFA', font=(
     'arial', 12, 'normal')).place(x=78, y=37)
 
 
 # label for port
-Label(root, text='Enter Port', bg='#FFFAFA', font=(
+Label(root, text='Enter Port * ', bg='#FFFAFA', font=(
     'arial', 12, 'normal')).place(x=78, y=67)
 
+# label for port
+objLblSpeed = Label(root, text='Enter Speed', bg='#FFFAFA', font=(
+    'arial', 12, 'normal'))
+objLblSpeed.place(x=78, y=97)
 
 # position of host input box
 objTbInpHost = Entry(root)
-objTbInpHost.place(x=168, y=37)
+objTbInpHost.place(x=188, y=37)
 
 
 # position of port input box
 objTbInpPort = Entry(root)
-objTbInpPort.place(x=168, y=67)
+objTbInpPort.place(x=188, y=67)
+
+# position of port input box
+objTbInpSpeed = Entry(root)
+objTbInpSpeed.place(x=188, y=97)
 
 
 arrModes = [('Single Port', 1), ('Multiple Ports', 2)]
 frame = Frame(root, width=0, height=0, bg='#FFFAFA')
-frame.place(x=68, y=87)
+frame.place(x=58, y=127)
 for txt, val in arrModes:
     Radiobutton(frame,
                 text=txt,
@@ -94,10 +112,14 @@ for txt, val in arrModes:
 
 # create button to scan ports
 Button(root, text='Check for open Port', bg='#FFFAFA', font=(
-    'arial', 12, 'normal'), command=fnStartPortScan).place(x=78, y=140)
+    'arial', 12, 'normal'), command=fnStartPortScan).place(x=78, y=170)
 Button(root, text='Close Program', bg='#FFFAFA', font=(
-    'arial', 12, 'normal'), command=root.destroy).place(x=248, y=140)
+    'arial', 12, 'normal'), command=root.destroy).place(x=248, y=170)
 
 
+
+#! When loading window
+objTbInpSpeed.place_forget()
+objLblSpeed.place_forget()
 
 root.mainloop()
