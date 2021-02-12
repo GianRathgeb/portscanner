@@ -97,8 +97,11 @@ objTbInpHost.insert(END, 'localhost')
 # Create and position the port input box
 objTbInpPort = Entry(root)
 objTbInpPort.place(x=188, y=67)
-objTbInpPort.insert(END, '80')
-
+if objCheckBoxPicked == 21: 
+    objTbInpPort.insert(END, '80')
+else:
+    objTbInpPort.insert(END, '80-81')
+    
 # Create and position the speed input box
 objTbInpSpeed = Entry(root)
 objTbInpSpeed.place(x=188, y=97)
