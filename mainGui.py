@@ -91,15 +91,18 @@ objLblSpeed.place(x=78, y=97)
 # Create and position the host input box
 objTbInpHost = Entry(root)
 objTbInpHost.place(x=188, y=37)
+objTbInpHost.insert(END, 'localhost')
 
 
 # Create and position the port input box
 objTbInpPort = Entry(root)
 objTbInpPort.place(x=188, y=67)
+objTbInpPort.insert(END, '80')
 
 # Create and position the speed input box
 objTbInpSpeed = Entry(root)
 objTbInpSpeed.place(x=188, y=97)
+objTbInpSpeed.insert(END, '0.1')
 
 
 arrModes = [('Single Port', 1), ('Multiple Ports', 2)]
