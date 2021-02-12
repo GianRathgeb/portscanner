@@ -7,7 +7,7 @@ from scanSinglePort import fnScanPort as fnScanSinglePort
 from scanMultiPort import fnScanPort as fnScanMultiPort
 
 # ? global variables
-blnPortModeSingle = True
+blnPortModeSingle = False
 
 # this is the function called when the button is clicked
 
@@ -48,7 +48,7 @@ root = Tk()
 
 # variable for radio buttons
 objCheckBoxPicked = IntVar()
-objCheckBoxPicked.set(1)
+objCheckBoxPicked.set(2)
 
 
 # function to handle radio buttons change
@@ -123,10 +123,5 @@ Button(root, text='Check for open Port', bg='#FFFAFA', font=(
 Button(root, text='Close Program', bg='#FFFAFA', font=(
     'arial', 12, 'normal'), command=root.destroy).place(x=248, y=170)
 
-
-
-#! When loading window
-objTbInpSpeed.place_forget()
-objLblSpeed.place_forget()
 
 root.mainloop()
