@@ -107,7 +107,6 @@ objTbInpSpeed = Entry(root)
 objTbInpSpeed.place(x=188, y=97)
 objTbInpSpeed.insert(END, '0.1')
 
-
 arrModes = [('Single Port', 1), ('Multiple Ports', 2)]
 frame = Frame(root, width=0, height=0, bg='#FFFAFA')
 frame.place(x=58, y=127)
