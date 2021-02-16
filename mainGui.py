@@ -7,7 +7,7 @@ from scanSinglePort import fnScanPort as fnScanSinglePort
 from scanMultiPort import fnScanPort as fnScanMultiPort
 
 # ? global variables
-blnPortModeSingle = True
+blnPortModeSingle = False
 
 # this is the function called when the button is clicked
 
@@ -49,7 +49,7 @@ root = Tk()
 
 # variable for radio buttons
 objCheckBoxPicked = IntVar()
-objCheckBoxPicked.set(1)
+objCheckBoxPicked.set(2)
 
 
 # function to handle radio buttons change
@@ -92,16 +92,21 @@ objLblSpeed.place(x=78, y=97)
 # Create and position the host input box
 objTbInpHost = Entry(root)
 objTbInpHost.place(x=188, y=37)
+objTbInpHost.insert(END, 'localhost')
 
 
 # Create and position the port input box
 objTbInpPort = Entry(root)
 objTbInpPort.place(x=188, y=67)
-
+if objCheckBoxPicked == 21: 
+    objTbInpPort.insert(END, '80')
+else:
+    objTbInpPort.insert(END, '80-81')
+    
 # Create and position the speed input box
 objTbInpSpeed = Entry(root)
 objTbInpSpeed.place(x=188, y=97)
-
+objTbInpSpeed.insert(END, '0.1')
 
 arrModes = [('Single Port', 1), ('Multiple Ports', 2)]
 frame = Frame(root, width=0, height=0, bg='#FFFAFA')
@@ -121,10 +126,5 @@ Button(root, text='Check for open Port', bg='#FFFAFA', font=(
 Button(root, text='Close Program', bg='#FFFAFA', font=(
     'arial', 12, 'normal'), command=root.destroy).place(x=248, y=170)
 
-
-
-#! When loading window
-objTbInpSpeed.place_forget()
-objLblSpeed.place_forget()
 
 root.mainloop()
