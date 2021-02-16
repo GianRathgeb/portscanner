@@ -12,6 +12,7 @@ blnPortModeSingle = True
 # this is the function called when the button is clicked
 
 
+
 # function to handle the button press to check for open ports
 def fnStartPortScan():
     # TODO: Check if fields filled out
