@@ -21,8 +21,10 @@ def fnScanPort(hostname, port):
         # returns an error indicator
         result = s.connect_ex((target, port))
         if result == 0:
+            # Happens when the port is open
             print(f"Port {port} is open")
         else:
+            # Happens when the port is closed
             print(f"Port {port} is closed")
         s.close()
     # Stop program when user interrupt or when error
