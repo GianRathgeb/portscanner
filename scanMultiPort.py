@@ -2,6 +2,8 @@ import socket
 import sys
 import time
 
+# TODO: use threads to perform multiple portscanns at the same time, use array to store and sort results
+
 def fnScanPort(hostname, lowestPort, highestPort, speed):
     # Check if ports are integers
     if not isinstance(lowestPort, int):
