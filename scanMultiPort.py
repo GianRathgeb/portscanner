@@ -19,8 +19,10 @@ def fnScanPort(hostname, lowestPort, highestPort, speed):
             # returns an error indicator
             result = s.connect_ex((target, port))
             if result == 0:
+                # Happens when the port is open
                 print("Port {} is open".format(port))
             else:
+                # Happens when the port is closed
                 print("Port {} is closed".format(port))
             s.close()
             time.sleep(speed)
