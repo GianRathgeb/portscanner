@@ -6,7 +6,7 @@ from tkinter import *
 from scanSinglePort import fnScanPort as fnScanSinglePort
 from scanMultiPort import fnScanPort as fnScanMultiPort
 
-# ? global variables
+#! global variables
 blnPortModeSingle = False
 
 # this is the function called when the button is clicked
