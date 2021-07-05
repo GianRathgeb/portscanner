@@ -8,7 +8,7 @@ arrPortsClosed = []
 startPort = 440
 endPort = 450
 # Use a max of 500 (my PC can do 916)
-threads = 100
+threads = 200
 
 # Generate equal lists to scan (one list per thread)
 seq = list(range(startPort, endPort))
