@@ -1,16 +1,14 @@
-# If all ports are closed and 500 threads are used, it takes about 5 minutes to scan all 65000 ports
+# If all ports are closed and 500 threads are used, it takes up to 5 minutes to scan all 65000 ports
 import threading, socket, sys, time
 
-start = time.time()
-
-hostname = "rads920"
+hostname = "google.com"
 arrPortsOpen = []
 arrPortsClosed = []
 
-startPort = 0
-endPort = 65000
+startPort = 75
+endPort = 85
 # Use a max of 500 (my PC can do 916)
-threads = 500
+threads = 100
 
 # Generate equal lists to scan (one list per thread)
 seq = list(range(startPort, endPort))
@@ -38,6 +36,7 @@ class PortScan(threading.Thread):
 
     def run(self):
         try:
+            # Scan every port in this thread
             for port in self.portList:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -60,14 +59,15 @@ class PortScan(threading.Thread):
 
 
 for i in arrPorts:
+    # start the threads
     PortScan(i).start()
 
 
 while True:
+    # check if scan is finished
+    # # if finished, print results sorted (threads can finish before each other when ports are open)
     time.sleep(1)
     if len(arrPortsClosed) + len(arrPortsOpen) == endPort - startPort:
         print("Open Ports: ", sorted(arrPortsOpen))
         print("Closed Ports: ", sorted(arrPortsClosed))
         break
-
-print(time.time() - start)
