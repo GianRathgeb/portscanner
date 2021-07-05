@@ -5,8 +5,8 @@ hostname = "google.com"
 arrPortsOpen = []
 arrPortsClosed = []
 
-startPort = 75
-endPort = 85
+startPort = 440
+endPort = 450
 # Use a max of 500 (my PC can do 916)
 threads = 100
 
