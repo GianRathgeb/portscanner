@@ -70,4 +70,5 @@ while True:
     if len(arrPortsClosed) + len(arrPortsOpen) == endPort - startPort:
         print("Open Ports: ", sorted(arrPortsOpen))
         print("Closed Ports: ", sorted(arrPortsClosed))
+        # could also close the program, but I leave it here --> no problems if adding code underneath
         break
