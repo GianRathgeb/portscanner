@@ -1,14 +1,14 @@
 # If all ports are closed and 500 threads are used, it takes up to 5 minutes to scan all 65000 ports
 import threading, socket, sys, time
 
-hostname = "google.com"
+hostname = "google.ch"
 arrPortsOpen = []
 arrPortsClosed = []
 
-startPort = 440
-endPort = 450
+startPort = 0
+endPort = 1000
 # Use a max of 500 (my PC can do 916)
-threads = 200
+threads = 500
 
 # Generate equal lists to scan (one list per thread)
 seq = list(range(startPort, endPort))
